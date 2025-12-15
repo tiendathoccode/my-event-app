@@ -4,53 +4,87 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <!-- 1. TÊN APP (Hiện dưới icon trên điện thoại) -->
-    <title>Tạo Sự Kiện</title> 
+    <!-- --- THÔNG TIN APP (Sửa tên và icon theo ý bạn) --- -->
+    <title>Tạo Sự Kiện</title>
 
-    <!-- 2. LINK ICON (Thay link ảnh của bạn vào đây) -->
-    <!-- Bạn có thể lấy link ảnh từ Facebook, Imgur hoặc link có sẵn này để test -->
+    <!-- Thay link ảnh icon của bạn vào đây (đuôi .png hoặc .jpg) -->
     <link rel="apple-touch-icon" href="https://cdn-icons-png.flaticon.com/512/3652/3652191.png">
     <link rel="icon" type="image/png" href="https://cdn-icons-png.flaticon.com/512/3652/3652191.png">
 
-    <script>
-        // --- QUAN TRỌNG NHẤT: DÁN LINK APP SCRIPT CỦA BẠN VÀO DƯỚI ĐÂY ---
-        // Link phải có dạng: https://script.google.com/macros/s/..../exec
-        
-        const myAppScriptUrl = "https://script.google.com/macros/s/AKfycbzoLw10SWLAMMy0peUjSj5iI6F6l5Kv2vJ8_9zwPnDT485lgHybWZkse8eWu5fQ5MfgEg/exec"; 
-        
-        // Code tự động chuyển hướng
-        window.onload = function() {
-            if (myAppScriptUrl && myAppScriptUrl.includes("http")) {
-                 window.location.replace(myAppScriptUrl);
-            }
-        };
-    </script>
-
     <style>
         body {
-            background-color: #f3f4f6; /* Màu nền xám nhẹ */
+            background-color: #f3f4f6;
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
             margin: 0;
-            font-family: sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
             flex-direction: column;
+            text-align: center;
         }
-        .loader {
-            border: 5px solid #e5e7eb;
-            border-top: 5px solid #A855F7; /* Màu tím xoay xoay */
-            border-radius: 50%;
-            width: 50px;
-            height: 50px;
-            animation: spin 1s linear infinite;
+        .icon-preview {
+            width: 80px;
+            height: 80px;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+            background-image: url('https://cdn-icons-png.flaticon.com/512/3652/3652191.png'); /* Sửa link ảnh ở đây nữa nếu muốn hiện preview */
+            background-size: cover;
         }
-        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
-        p { margin-top: 20px; color: #666; font-weight: 500;}
+        h2 { margin: 0 0 10px 0; color: #333; }
+        p { color: #666; margin-bottom: 30px; padding: 0 20px; line-height: 1.5; }
+        
+        .btn-open {
+            background: linear-gradient(135deg, #A855F7 0%, #EC4899 100%);
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            border-radius: 30px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(168, 85, 247, 0.4);
+            transition: transform 0.2s;
+            text-decoration: none; /* Quan trọng để thẻ a trông như nút */
+            display: inline-block;
+        }
+        .btn-open:active { transform: scale(0.95); }
+        
+        .guide {
+            margin-top: 40px;
+            font-size: 13px;
+            color: #888;
+            background: #e5e7eb;
+            padding: 10px 20px;
+            border-radius: 10px;
+        }
     </style>
 </head>
 <body>
-    <div class="loader"></div>
-    <p>Đang mở ứng dụng...</p>
+
+    <!-- Icon xem trước -->
+    <div class="icon-preview"></div>
+
+    <h2>Cài đặt Ứng Dụng</h2>
+    <p>Nhấn nút Menu của trình duyệt chọn<br><strong>"Thêm vào màn hình chính"</strong><br>để cài icon đẹp.</p>
+
+    <!-- Nút mở ứng dụng -->
+    <a id="appLink" href="#" class="btn-open">Mở Ứng Dụng Ngay</a>
+
+    <div class="guide">Tự động chuyển sau 5 giây...</div>
+
+    <script>
+        // --- DÁN LINK APP SCRIPT CỦA BẠN VÀO DƯỚI ĐÂY ---
+        const myAppScriptUrl = "https://script.google.com/macros/s/AKfycbzoLw10SWLAMMy0peUjSj5iI6F6l5Kv2vJ8_9zwPnDT485lgHybWZkse8eWu5fQ5MfgEg/exec"; 
+
+        // Gán link cho nút bấm
+        document.getElementById('appLink').href = myAppScriptUrl;
+
+        // Tự động chuyển hướng sau 5 giây (5000ms)
+        setTimeout(function() {
+            window.location.href = myAppScriptUrl;
+        }, 5000);
+    </script>
 </body>
 </html>
