@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- 1. TÊN APP (Hiện dưới icon trên điện thoại) -->
+    <title>Tạo Sự Kiện</title> 
+
+    <!-- 2. LINK ICON (Thay link ảnh của bạn vào đây) -->
+    <!-- Bạn có thể lấy link ảnh từ Facebook, Imgur hoặc link có sẵn này để test -->
+    <link rel="apple-touch-icon" href="https://cdn-icons-png.flaticon.com/512/3652/3652191.png">
+    <link rel="icon" type="image/png" href="https://cdn-icons-png.flaticon.com/512/3652/3652191.png">
+
+    <script>
+        // --- QUAN TRỌNG NHẤT: DÁN LINK APP SCRIPT CỦA BẠN VÀO DƯỚI ĐÂY ---
+        // Link phải có dạng: https://script.google.com/macros/s/..../exec
+        
+        const myAppScriptUrl = "https://script.google.com/macros/s/AKfycbzoLw10SWLAMMy0peUjSj5iI6F6l5Kv2vJ8_9zwPnDT485lgHybWZkse8eWu5fQ5MfgEg/exec"; 
+        
+        // Code tự động chuyển hướng
+        window.onload = function() {
+            if (myAppScriptUrl && myAppScriptUrl.includes("http")) {
+                 window.location.replace(myAppScriptUrl);
+            }
+        };
+    </script>
+
+    <style>
+        body {
+            background-color: #f3f4f6; /* Màu nền xám nhẹ */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: sans-serif;
+            flex-direction: column;
+        }
+        .loader {
+            border: 5px solid #e5e7eb;
+            border-top: 5px solid #A855F7; /* Màu tím xoay xoay */
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+        p { margin-top: 20px; color: #666; font-weight: 500;}
+    </style>
+</head>
+<body>
+    <div class="loader"></div>
+    <p>Đang mở ứng dụng...</p>
+</body>
+</html>
